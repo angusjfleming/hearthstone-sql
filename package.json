@@ -6,9 +6,6 @@
   "dependencies": {
     "fs": "0.0.1-security",
     "path": "^0.12.7",
-    "performance-now": "^2.1.0",
-    "request": "^2.81.0",
-    "request-promise": "^4.2.1",
     "sqlite": "^2.8.0",
     "unirest": "^0.5.1"
   },
