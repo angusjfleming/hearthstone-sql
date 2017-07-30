@@ -1,0 +1,34 @@
+{
+  "name": "hearthstone-sql",
+  "version": "1.0.0",
+  "description": "hearthstone api conveniently turned into an sql db by XIV.",
+  "main": "hearthstone-sql.js",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
+    "performance-now": "^2.1.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "sqlite": "^2.8.0",
+    "unirest": "^0.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/realXIV/hearthstone-sql.git"
+  },
+  "keywords": [
+    "hearthstone",
+    "sqlite",
+    "sql"
+  ],
+  "author": "XIV",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/realXIV/hearthstone-sql/issues"
+  },
+  "homepage": "https://github.com/realXIV/hearthstone-sql#readme"
+}
