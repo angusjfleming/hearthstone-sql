@@ -48,3 +48,4 @@ exports.importcards = function() {
 })
 }
 exports.dbpath = __dirname + "\\carddb.sqlite"
+exports.jsonpath = __dirname + "\\cardinfo.json"
