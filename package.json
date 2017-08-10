@@ -1,6 +1,6 @@
 {
   "name": "hearthstone-sql",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "hearthstone api conveniently turned into an sql db by XIV.",
   "main": "hearthstone-sql.js",
   "dependencies": {
