@@ -2,7 +2,7 @@ const database = require("sqlite");
 const fs = require("fs");
 const unirest = require("unirest");
 const path = require('path')
-var setarray = ["Basic", "Classic", "Hero Skins", "Promo", "Hall of Fame", "Naxxramas", "Goblins vs Gnomes", "Blackrock Mountain", "The Grand Tournament", "The League of Explorers", "Whispers of the Old Gods", "One Night in Karazhan", "Mean Streets of Gadgetzan", "Journey to Un\"Goro", "Knights of the Frozen Throne", "Kobolds & Catacombs"];
+var setarray = ["Basic", "Classic", "Hero Skins", "Promo", "Hall of Fame", "Naxxramas", "Goblins vs Gnomes", "Blackrock Mountain", "The Grand Tournament", "The League of Explorers", "Whispers of the Old Gods", "One Night in Karazhan", "Mean Streets of Gadgetzan", "Journey to Un'Goro", "Knights of the Frozen Throne", "Kobolds & Catacombs"];
 
 exports.fetchdata = function(mashapekey) {
     return new Promise((resolve, reject) => {
@@ -32,7 +32,7 @@ exports.importcards = function() {
                 var itemsProcessed = 0;
 
                 setarray.forEach(function(set) {
-                    cardinfo[`${set}`].forEach(function(element) {
+                    cardinfo[set].forEach(function(element) {
                         hssqlcarddb.run("INSERT INTO cardinfo (cardID, name, cardSet, type, cardText, playerClass, locale, mechanics, faction, attack, health, img, imgGold, cost, rarity, flavor, artist, collectible, race, durability, elite, howToGet, howToGetGold) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [element.cardId, element.name, element.cardSet, element.type, element.text, element.playerClass, element.locale, JSON.stringify(element.mechanics), element.faction, element.attack, element.health, element.img, element.imgGold, element.cost, element.rarity, element.flavor, element.artist, element.collectible, element.race, element.durability, element.elite, element.howToGet, element.howToGetGold]).then(() => {
                                 if (set === setarray[setarray.length - 1] && cardinfo[set][cardinfo[set].length - 1].cardId === element.cardId) {
                                     hssqlcarddb.close();
