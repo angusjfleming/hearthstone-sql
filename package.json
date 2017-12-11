@@ -1,12 +1,13 @@
 {
   "name": "hearthstone-sql",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "hearthstone api conveniently turned into an sql db by XIV.",
   "main": "hearthstone-sql.js",
   "dependencies": {
     "fs": "0.0.1-security",
     "path": "^0.12.7",
     "sqlite": "^2.8.0",
+    "sqlite3": "^3.1.13",
     "unirest": "^0.5.1"
   },
   "devDependencies": {},
