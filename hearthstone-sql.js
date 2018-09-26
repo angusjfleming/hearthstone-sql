@@ -2,7 +2,7 @@ const database = require("sqlite");
 const fs = require("fs");
 const unirest = require("unirest");
 const path = require('path')
-var setarray = ["Basic", "Classic", "Hero Skins", "Promo", "Hall of Fame", "Naxxramas", "Goblins vs Gnomes", "Blackrock Mountain", "The Grand Tournament", "The League of Explorers", "Whispers of the Old Gods", "One Night in Karazhan", "Mean Streets of Gadgetzan", "Journey to Un'Goro", "Knights of the Frozen Throne", "Kobolds & Catacombs"];
+var setarray = ["Basic", "Classic", "Hero Skins", "Promo", "Hall of Fame", "Naxxramas", "Goblins vs Gnomes", "Blackrock Mountain", "The Grand Tournament", "The League of Explorers", "Whispers of the Old Gods", "One Night in Karazhan", "Mean Streets of Gadgetzan", "Journey to Un'Goro", "Knights of the Frozen Throne", "Kobolds & Catacombs", "The Witchwood", "The Boomsday Project"];
 
 exports.fetchdata = function(mashapekey) {
     return new Promise((resolve, reject) => {
