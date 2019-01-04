@@ -4,6 +4,8 @@
 
 Data fetched from http://hearthstoneapi.com. Data will be stored locally in the same manner as the database is.
 
+Now dynamically builds (playable) card list, and now the package should be evergreen in that it will require no further maintenance from myself.
+
 ## Install
 
 Install the package from npm:
