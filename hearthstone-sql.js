@@ -2,7 +2,7 @@ const database = require("sqlite");
 const fs = require("fs");
 const unirest = require("unirest");
 const path = require('path')
-var setarray = ["Basic", "Classic", "Hero Skins", "Promo", "Hall of Fame", "Naxxramas", "Goblins vs Gnomes", "Blackrock Mountain", "The Grand Tournament", "The League of Explorers", "Whispers of the Old Gods", "One Night in Karazhan", "Mean Streets of Gadgetzan", "Journey to Un'Goro", "Knights of the Frozen Throne", "Kobolds & Catacombs", "The Witchwood", "The Boomsday Project"];
+var setarray = [];
 
 exports.fetchdata = function(mashapekey) {
     return new Promise((resolve, reject) => {
@@ -12,7 +12,10 @@ exports.fetchdata = function(mashapekey) {
                 fs.unlink(__dirname + "\\cardinfo.json", function(err) {});
                 fs.writeFile(__dirname + "\\cardinfo.json", JSON.stringify(result.body), (err) => {
                     if (err) reject("Error whilst retrieving / saving data.");
-                    else resolve("Saved successfully.");
+                    else {
+                        setarray = buildsetarray(result.body)
+                        resolve("Saved successfully.");
+                    }
                 });
             })
     });
@@ -31,6 +34,7 @@ exports.importcards = function() {
                 hssqlcarddb.run("DELETE FROM cardinfo")
                 var itemsProcessed = 0;
 
+                setarray = buildsetarray(cardinfo)
                 setarray.forEach(function(set) {
                     cardinfo[set].forEach(function(element) {
                         hssqlcarddb.run("INSERT INTO cardinfo (cardID, name, cardSet, type, cardText, playerClass, locale, mechanics, faction, attack, health, img, imgGold, cost, rarity, flavor, artist, collectible, race, durability, elite, howToGet, howToGetGold) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [element.cardId, element.name, element.cardSet, element.type, element.text, element.playerClass, element.locale, JSON.stringify(element.mechanics), element.faction, element.attack, element.health, element.img, element.imgGold, element.cost, element.rarity, element.flavor, element.artist, element.collectible, element.race, element.durability, element.elite, element.howToGet, element.howToGetGold]).then(() => {
@@ -49,6 +53,15 @@ exports.importcards = function() {
             })
         })
     })
+}
+
+function buildsetarray(carddata) {
+    var temp = Object.keys(carddata)
+    var undesirables = ["Promo", "Tavern Brawl", "Taverns of Time", "Hero Skins", "Missions", "Credits", "System", "Debug"]
+    undesirables.forEach(function(serf) {
+        temp = temp.filter(item => item != serf)
+    });
+    return temp
 }
 exports.dbpath = __dirname + "\\carddb.sqlite";
 exports.jsonpath = __dirname + "\\cardinfo.json";
